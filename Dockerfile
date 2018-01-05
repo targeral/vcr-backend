@@ -10,4 +10,5 @@ RUN apt-get update -y && \
     mkdir /code/
 ADD . /code/
 RUN cd /code/ && npm install
+EXPOSE 3030
 CMD ["npm", "run", "dev"]
