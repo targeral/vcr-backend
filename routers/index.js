@@ -10,7 +10,7 @@ module.exports = () => {
     const router = new Router();
     const fs = require("fs");
     router.get("/", (ctx, next) => {
-        ctx.body = 'hello world new' + Date.now();
+        ctx.body = 'hello world.' + (new Date);
     });
 
     router.get('/test', async(ctx, next) => {
