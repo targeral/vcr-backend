@@ -9,7 +9,7 @@ RUN apt-get update -y && \
 	  npm cache clean --force && \
     mkdir /code/
 ADD . /code/
-RUN cd /code/ && npm install
+RUN cd /code/ && npm install pm2 -g && npm install
 EXPOSE 3030
 WORKDIR /code/
 CMD ["npm", "run", "dev"]
