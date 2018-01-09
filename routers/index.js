@@ -15,8 +15,7 @@ module.exports = () => {
     API(router);
 
     router.get("/", (ctx, next) => {
-        // ctx.body = Views.index();
-        ctx.body = 'hello world';
+        ctx.body = Views.index();
         next();
     });
 
