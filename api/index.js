@@ -11,6 +11,13 @@ const API = (router) => {
     r.post('register', (ctx, next) => {
         User.register(ctx, next);
     });
+
+    r.get('test', (ctx, next) => {
+        ctx.body = {
+            info: 'dalao nilao'
+        };
+        next();
+    });
 };
 
 module.exports = API;

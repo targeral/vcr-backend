@@ -3,8 +3,8 @@ const path = require('path');
 
 
 const view = {
-    index () {
-        return fs.readFileSync(`${__dirname}/template/index.html`, "utf8");
+    index() {
+        return fs.readFileSync(`${__dirname}/template/index.html`, 'utf8');
     }
 }
 

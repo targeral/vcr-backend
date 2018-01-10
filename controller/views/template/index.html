@@ -114,7 +114,7 @@
             socket.on('connect', function () {
                 console.log('connect', socket.id);
             });
-            socket.on('a', function (data) {
+            socket.on('receiveMsg', function (data) {
                 console.log('a', data)
                 let myself = data.id === socket.id;
                 let tpl = `
@@ -127,7 +127,10 @@
             });
             // var socket = io.connect('127.0.0.1:3030');
             $('form').submit(function () {
-                socket.emit('message', $('#m').val());
+                socket.emit('sendMsg', {
+                    message: $('#m').val(),
+                    author: '小明'
+                });
                 $('#m').val('');
                 return false;
             });

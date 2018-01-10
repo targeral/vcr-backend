@@ -15,18 +15,18 @@ module.exports = (server) => {
 
     io.on("connection", client => {
         log.info('socket 已连接', client.id);
-        client.on("message", data => {
-            client.emit('a', {
-                id: client.id,
-                message: data,
-                author: client.id
-            })
-            client.broadcast.emit("a", {
-                id: client.id,
-                message: data,
-                author: client.id
-            });
+        client.on('sendMsg', data => {
             console.log(data);
+            client.emit('receiveMsg', {
+                id: client.id,
+                message: data.message,
+                author: data.author || '张俊'
+            });
+            client.broadcast.emit('receiveMsg', {
+                id: client.id,
+                message: data.message,
+                author: data.author || '张俊'
+            });
         });
         client.on("disconnect", function() {
             console.log("disconnect");
