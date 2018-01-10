@@ -12,5 +12,5 @@ ADD . /code/
 RUN cd /code/ && npm install pm2 -g && npm install
 EXPOSE 3030
 WORKDIR /code/
-#CMD ["npm", "run", "dev"]
-CMD ["pm2-runtime", "app.js"]
+CMD ["npm", "run", "dev"]
+#CMD ["pm2-runtime", "app.js"]
