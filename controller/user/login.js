@@ -36,15 +36,9 @@ const loginValid = (username, password) => {
     return body;
 }
 
-const Login = ({ request: req, response: res }) => {
-    let { body: item } = req;
-    let { username, password } = item;
-    let body = null;
-
+const Login = (username, password) => {
     password = md5(password);
-    body = loginValid(username, password);
-    res.status = 200;
-    res.body = body;
+    return loginValid(username, password);
 }
 
 module.exports = Login;

@@ -2,13 +2,13 @@ const login = require('./login');
 const register = require('./register');
 
 class USER {
-    login(ctx, next) {
-        login(ctx);
-        next();
+    login(req) {
+        let { body: { username, password } } = req;
+        return login(username, password);
     }
-    register(ctx, next) {
-        register(ctx);
-        next();
+    register(req) {
+        let { body: { username, password } } = req;
+        return register(username, password);
     }
 }
 

@@ -10,7 +10,7 @@ const existSameUser = (username) => {
     return user.find({ username }).value();
 }
 
-const doRegister = async (username, password) => {
+const doRegister = (username, password) => {
     let item = {};
     item.username = username;
     item.password = md5(password);
@@ -18,26 +18,22 @@ const doRegister = async (username, password) => {
     return user.push(item).write();
 }
 
-const Register = async ({ request: req, response: res }) => {
-    let item = req.body;
-    let { username, password } = item;
+const Register = (username, password) => {
     let body = null;
-
+    console.log(username, password)
     if (existSameUser(username)) {
         body = {
             errno: 1,
             info: `${username} is exists`
         };
     } else {
-        await doRegister(username, password);
+        doRegister(username, password);
         body = {
             errno: 0,
             info: 'success'
         };
     }
-
-    res.status = 200;
-    res.body = body;
+    return body;
 }
 
 module.exports = Register;
