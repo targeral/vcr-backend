@@ -8,7 +8,7 @@ const API = require('../api');
 const Views = require('../controller/views');
 
 module.exports = () => {
-    const Router = require("koa-router");
+    const Router = require('koa-router');
     const router = new Router();
     const fs = require("fs");
 
@@ -20,6 +20,7 @@ module.exports = () => {
     });
 
     router.get('/test', async(ctx, next) => {
+        console.log(ctx.request);
         ctx.response.status = 200;
         ctx.response.body = 'test';
         await next();

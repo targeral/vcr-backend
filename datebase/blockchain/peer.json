@@ -1,0 +1,82 @@
+{
+  "peers": [
+    {
+      "ip": 0,
+      "port": 7000,
+      "state": 2,
+      "sharePort": 1
+    },
+    {
+      "ip": 0,
+      "port": 7000,
+      "state": 2,
+      "sharePort": 1
+    },
+    {
+      "ip": 0,
+      "port": 7000,
+      "state": 2,
+      "sharePort": 1
+    },
+    {
+      "ip": 0,
+      "port": 7000,
+      "state": 2,
+      "sharePort": 1
+    },
+    {
+      "ip": 0,
+      "port": 7000,
+      "state": 2,
+      "sharePort": 1
+    },
+    {
+      "ip": 0,
+      "port": 7000,
+      "state": 2,
+      "sharePort": 1
+    },
+    {
+      "ip": 0,
+      "port": 7000,
+      "state": 2,
+      "sharePort": 1
+    },
+    {
+      "ip": 0,
+      "port": 7000,
+      "state": 2,
+      "sharePort": 1
+    },
+    {
+      "ip": 0,
+      "port": 7000,
+      "state": 2,
+      "sharePort": 1
+    },
+    {
+      "ip": 0,
+      "port": 7000,
+      "state": 2,
+      "sharePort": 1
+    },
+    {
+      "ip": 0,
+      "port": 7000,
+      "state": 2,
+      "sharePort": 1
+    },
+    {
+      "ip": 0,
+      "port": 7000,
+      "state": 2,
+      "sharePort": 1
+    },
+    {
+      "ip": 0,
+      "port": 7000,
+      "state": 2,
+      "sharePort": 1
+    }
+  ]
+}

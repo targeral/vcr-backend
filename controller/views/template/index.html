@@ -95,10 +95,41 @@
             transform: translateY(-50%) translateX(0px);
         }
 
+        .points {
+            width: 100px;
+            height: 100px;
+            display: block;
+            background: red;
+        }
+
+        .points:hover::after {
+            content: url('http://localhost:3030/api/point');
+            font-size: 16px;
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            display: block;
+        }
+
+        @supports (-webkit-appearance: none) {
+            #chrome_detect::after {
+                content: url('http://localhost:3030/api/point1');
+            }
+        }
+
+        .box p:nth-last-of-type(1) {
+            color: blue;
+        }
+
     </style>
 </head>
 
 <body>
+    <div class="box">
+        <p>1</p>
+        <p>2</p>
+    </div>
+    <a href="#" class="points">hover me</a>
     <ul id="messages">   
     </ul>
     <form action="">
