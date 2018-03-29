@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "supervisor test/index.js",
-    "dev": "pm2-runtime start app.js"
+    "dev": "supervisor start app.js",
+    "pm2": "pm2-runtime start app.js"
   },
   "repository": {
     "type": "git",

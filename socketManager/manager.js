@@ -7,7 +7,7 @@ class socketManage {
     constructor(server, socketConfig, appList) {
         this.clientQueue = new Set();
         this.appList = appList || [];
-        this.io = socket(server, config || {});
+        this.io = socket(server, socketConfig || {});
         this.initConnection(this.io);
     }
 
