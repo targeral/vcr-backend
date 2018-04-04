@@ -9,6 +9,7 @@
 
 const KoaRouter = require('koa-router');
 const user = require('../features/user');
+const chat = require('../features/chat');
 
 class Router {
     constructor(router, featurePath) {
@@ -43,6 +44,10 @@ module.exports = (server = {}) => {
         {
             path: '/user',
             feature: user,
+        },
+        {
+            path: '/chat',
+            feature: chat
         }
     ]);
     return router;
