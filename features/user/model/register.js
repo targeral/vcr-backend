@@ -1,10 +1,5 @@
-const user = require('../../datebase/user').user;
-const crypto = require("crypto");
-
-const md5 = str => crypto
-		.createHash('md5')
-		.update(str.toString())
-		.digest('hex');
+const { user } = require('../database');
+const { md5 } = require('../../utils');
 
 const existSameUser = (username) => {
     return user.find({ username }).value();
@@ -18,22 +13,28 @@ const doRegister = (username, password) => {
     return user.push(item).write();
 }
 
-const Register = (username, password) => {
-    let body = null;
-    console.log(username, password)
+module.exports = ({ username, password }) => {
+    let ret = null;
+
+    if (username.trim() === '' || password.trim() === '') {
+        return {
+            errno: 1,
+            info: 'username or password is empty'
+        };
+    }
+
     if (existSameUser(username)) {
-        body = {
+        ret = {
             errno: 1,
             info: `${username} is exists`
         };
     } else {
         doRegister(username, password);
-        body = {
+        ret = {
             errno: 0,
             info: 'success'
         };
     }
-    return body;
-}
 
-module.exports = Register;
+    return ret;
+}

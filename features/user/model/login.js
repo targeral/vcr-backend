@@ -1,11 +1,5 @@
-const user = require("../../datebase/user").user;
-const crypto = require("crypto");
-
-const md5 = str =>
-  crypto
-    .createHash("md5")
-    .update(str.toString())
-    .digest("hex");
+const { user }= require('../database');
+const { md5 } = require('../../utils');
 
 const validUserName = (username) => {
     return user.find({ username }).value();
@@ -16,29 +10,36 @@ const validPassWord = (username, password) => {
 }
 
 const loginValid = (username, password) => {
-    let body = null;
+    let ret = null;
+
+    if (username.trim() === '' || password.trim() === '') {
+        return {
+            errno: 1,
+            info: 'username or password is empty'
+        };
+    }
+
     if (!validUserName(username)) {
-        body = {
+        ret = {
             info: 'username is not exists',
             errno: 1
         };
     } else if (!validPassWord(username, password)) {
-        body = {
+        ret = {
             info: 'password is wrong',
             errno: 1
         };
     } else {
-        body = {
+        ret = {
             info: 'success',
             errno: 0
         }
     }
-    return body;
+
+    return ret;
 }
 
-const Login = (username, password) => {
-    password = md5(password);
-    return loginValid(username, password);
-}
-
-module.exports = Login;
+module.exports = ({ 
+    username, 
+    password 
+}) => loginValid(username, md5(password))

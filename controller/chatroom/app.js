@@ -11,9 +11,10 @@ const Log = require('log')
 module.exports = (server) => {
     const io = socket(server, {
         origins: "*:*"
-    });
+    }).of('/chat');
 
     io.on("connection", client => {
+        client.emit('loginSucess', { msg: 'success'})
         log.info('socket 已连接', client.id);
         client.on('sendMsg', data => {
             console.log(data);
@@ -28,6 +29,16 @@ module.exports = (server) => {
                 author: data.author || '张俊'
             });
         });
+        client.on('joinroom', data => {
+            let { room } = data
+            console.log(room)
+            client.join(room);
+        })
+        client.on('listen', data => {
+            let { msg, room } = data
+            console.log(data)
+            client.to(room).emit('listen', { msg })
+        })
         client.on("disconnect", function() {
             console.log("disconnect");
         });
