@@ -8,8 +8,10 @@
 // const Views = require('../controller/views');
 
 const KoaRouter = require('koa-router');
+const graphql = require('../graphql');
 const user = require('../features/user');
 const chat = require('../features/chat');
+const test = require('../features/test');
 
 class Router {
     constructor(router, featurePath) {
@@ -17,13 +19,15 @@ class Router {
         this.featurePath = featurePath;
     }
 
-    get(path, fn) {
+    get(path, fn) {        console.log(`${this.featurePath}/${path}`);
+        // console.log(`get${this.featurePath}/${path}`);
+
         this.router.get(`${this.featurePath}/${path}`, (ctx, next) => fn(ctx, next))
     }
 
     post(path, fn) {
-        console.log(`${this.featurePath}/${path}`);
-        this.router.post(`${this.featurePath}/${path}`, (ctx, next) => fn(ctx, next))
+        // console.log(`post${this.featurePath}/${path}`);
+        this.router.post(`${this.featurePath}/${path}`, (ctx, next) => fn(ctx, next));
     }
 }
 
@@ -40,6 +44,7 @@ const routerMap = (kr, server = {}) => {
 
 module.exports = (server = {}) => {
     const router = new KoaRouter();
+    // graphql(router);
     routerMap(router, server)([
         {
             path: '/user',
@@ -48,6 +53,10 @@ module.exports = (server = {}) => {
         {
             path: '/chat',
             feature: chat
+        },
+        {
+            path: '/test',
+            feature: test
         }
     ]);
     return router;

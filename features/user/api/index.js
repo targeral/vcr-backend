@@ -1,7 +1,17 @@
+const { graphiqlKoa, graphqlKoa } = require('apollo-server-koa');
+const schema = require('../graphql');
 const user = require('../model')();
 const { ReqDate } = require('../../utils');
 
 module.exports = (router) => {
+    router.post('graphql', graphqlKoa({ schema }));
+    router.get('graphql', graphqlKoa({ schema }));
+    router.get(
+        'graphiql', 
+        graphiqlKoa({
+            endpointURL: 'graphql'
+        })
+    );
     router.post('login', ({ request: req, response: res }, next) => {
         // let {
         //     request: req,

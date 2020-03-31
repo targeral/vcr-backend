@@ -1,4 +1,3 @@
-require('./graphql')
 const path = require('path');
 const Log = require('log');
 const log = new Log('info');
@@ -23,10 +22,10 @@ const router = require('./routers')(server);
 app.use(router.routes())
    .use(router.allowedMethods());
 
-app.use(cors({
-   origin: 'http://localhost:8080',
-   credentials: true
-}));
+// app.use(cors({
+//    origin: 'http://localhost:8080',
+//    credentials: true
+// }));
 
 // 聊天室
 // const chatroom = require('./controller/chatroom/app');
